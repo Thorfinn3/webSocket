@@ -15,7 +15,11 @@ const wss = new Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('close', () => console.log('Client disconnected'));
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
 });
+
 
 setInterval(() => {
   wss.clients.forEach((client) => {
