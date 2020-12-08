@@ -18,6 +18,9 @@
 
       function sendToServer() {
         socket.emit("msg",document.getElementById("input").value)
+        el = document.getElementById('input');
+        el.innerHTML = '';
+
       }
 
       var mymap = L.map('mapid').setView([51.505, -0.09], 13);
@@ -32,7 +35,6 @@
       }).addTo(mymap);
 
       socket.on('coordonate', (latLong) => {
-
         el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
         L.marker(latLong['latitude'],latLong['longitude']).addTo(mymap)

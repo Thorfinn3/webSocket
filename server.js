@@ -16,6 +16,7 @@ io.on('connection', (socket) => {
   console.log('Client connected');
   socket.emit('coordonate','{"latitude":48.78784141532905,"longitude":-3.231480160554523}')
   socket.on('disconnect', () => console.log('Client disconnected'));
+  
   socket.on('msg', (msg) => {
     console.log('msg: ' + msg);
   });
