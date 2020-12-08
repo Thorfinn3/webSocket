@@ -16,13 +16,13 @@
       $(function () {
         var socket = io();
         
-        socket.on('coordonate', (msg) => {
+        socket.on('coordonate', (latLong) => {
           el = document.getElementById('server-time');
-          el.innerHTML = 'Coordonnées: ' + coordonate;
+          el.innerHTML = 'Coordonnées: ' + latLong;
         });
 
         function sendToServer() {
-          socket.emit("msg","EZ: " + document.getElementById("input").value)
+          socket.emit("msg",document.getElementById("input").value)
         }
       });
     </script>
