@@ -19,8 +19,8 @@
       socket.on('coordonate', (latLong) => {
 
         el = document.getElementById('coordonate');
-        var latitude = latLong.latitude
-        var longitude = latLong.longitude
+        var latitude = latLong['latitude']
+        var longitude = latLong['longitude']
         el.innerHTML = 'Coordonnées: ' + latLong;
       });
 
