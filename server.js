@@ -18,6 +18,7 @@ io.on('connection', (socket) => {
 
   socket.on('msg', (msg) => {
     console.log('msg: ' + msg);
+    socket.emit('coordonate',msg)
   });
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
