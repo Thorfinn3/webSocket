@@ -16,12 +16,15 @@
       var socket = io();
       
       socket.on('coordonate', (latLong) => {
-        el = document.getElementById('server-time');
+        el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
       });
 
       function sendToServer() {
         socket.emit("msg",document.getElementById("input").value)
+        el = document.getElementById('input');
+        el.innerHTML = '';
+
       }
     </script>
     <br />
