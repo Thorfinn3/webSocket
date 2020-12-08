@@ -32,10 +32,10 @@
       }
 
       socket.on('coordonate', (latLong) => {
-
+        var coor = JSON.data(latLong)
         el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
-        L.marker(latLong['latitude'],latLong['longitude']).addTo(mymap)
+        L.marker(coor['latitude'],coor['longitude']).addTo(mymap)
       });
 
 
