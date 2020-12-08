@@ -13,18 +13,16 @@
     </br>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      $(function () {
-        var socket = io();
-        
-        socket.on('coordonate', (latLong) => {
-          el = document.getElementById('server-time');
-          el.innerHTML = 'Coordonnées: ' + latLong;
-        });
-
-        function sendToServer() {
-          socket.emit("msg",document.getElementById("input").value)
-        }
+      var socket = io();
+      
+      socket.on('coordonate', (latLong) => {
+        el = document.getElementById('server-time');
+        el.innerHTML = 'Coordonnées: ' + latLong;
       });
+
+      function sendToServer() {
+        socket.emit("msg",document.getElementById("input").value)
+      }
     </script>
     <br />
     <br />
