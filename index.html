@@ -11,12 +11,16 @@
     <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
     </br>
     </br>
+    <div id="mapid" style="width: 600px; height: 400px;"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
       
       socket.on('coordonate', (latLong) => {
+
         el = document.getElementById('coordonate');
+        var latitude = latLong.latitude
+        var longitude = latLong.longitude
         el.innerHTML = 'Coordonnées: ' + latLong;
       });
 
@@ -26,13 +30,8 @@
         el.innerHTML = '';
 
       }
-    </script>
-    <br />
-    <br />
-    <div id="mapid" style="width: 600px; height: 400px;"></div>
-    <script>
 
-      var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+      var mymap = L.map('mapid').setView([latitude, longitude], 13);
 
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
@@ -44,7 +43,8 @@
       }).addTo(mymap);
 
     </script>
-
+    <br />
+    <br />
     <p id="coordonate"></p>
   </body>
 </html>
