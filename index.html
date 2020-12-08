@@ -17,11 +17,11 @@
       var socket = io();
       
       socket.on('coordonate', (latLong) => {
-
+        var coor = JSON.parse(latLong)
         el = document.getElementById('coordonate');
         var latitude = latLong.latitude
         var longitude = latLong.latitude
-        el.innerHTML = 'Coordonnées: ' + latLong;
+        el.innerHTML = 'Coordonnées: ' + coor.latitude;
       });
 
       function sendToServer() {
