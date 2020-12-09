@@ -22,7 +22,7 @@
         var longitudeSanta = 0;
 
         //Initialisation de la map
-        var mymap = L.map('mapid').setView([67.49, 21.04], 5);
+        var mymap = L.map('mapid').setView([67.49, 21.04], 3);
 
         //Chargement de l'icone pour la maison
         var santaIMG = L.icon({
@@ -50,7 +50,7 @@
           el.innerHTML = el.innerHTML+"The client says : "+document.getElementById("input").value+"</br>";
           
           el = document.getElementById('input');
-          el.innerHTML = "";
+          el.innerHTML.value = " ";
           //Envoi du message
           socket.emit("msg",document.getElementById("input").value);
         };
