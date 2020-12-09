@@ -22,7 +22,7 @@ const server = express()
 
 const io = socketIO(server);
 
-var bot = new reviscript();
+const bot = reviscript();
 
 bot.loadDirectory("rive").then(loading_done).catch(loading_error);
  
