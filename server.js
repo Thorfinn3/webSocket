@@ -21,11 +21,30 @@ const server = express()
 
 const io = socketIO(server);
 
+var bot = new RiveScript();
+
+bot.loadDirectory("rive").then(loading_done).catch(loading_error);
+ 
+bot.loadFile("rive/client.rive").then(loading_done).catch(loading_error);
+ 
+function loading_done() {
+  console.log("Bot has finished loading!");
+ 
+  bot.sortReplies();
+}
+ 
+function loading_error(error, filename, lineno) {
+  console.log("Error when loading files: " + error);
+}
+
 io.on('connection', (socket) => {
   console.log('Client connected');
 
   socket.on('msg', (msg) => {
     console.log('msg: ' + msg);
+    bot.reply("client", msg).then(function(reply) {
+      console.log("The bot says: " + reply);
+    });
   });
 
   socket.on('disconnect', () => console.log('Client disconnected'));

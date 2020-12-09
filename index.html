@@ -50,6 +50,11 @@
         moySanta++;   
       });
 
+      socket.on('river', (riveMsg) => {
+        el = document.getElementById('riveResponse');
+        el.innerHTML = 'message: ' + riveMsg;
+      });
+
     </script>
     <br />
     <br />
@@ -58,6 +63,7 @@
     </br>
     <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
     </br>
+    <p id="riveResponse"></p>
   </body>
 </html>
 
