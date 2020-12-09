@@ -17,6 +17,9 @@
       var socket = io();
 
       var moySanta = 0
+      var latitude = 0
+      var longitude = 0
+
       var mymap = L.map('mapid').setView([67.49, 21.04], 10);
       var santaPos = L.marker([67.49, 21.04]).addTo(mymap)      
 
@@ -37,10 +40,10 @@
         let coor = JSON.parse(latLong)
         el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
-        let lat = (lat * nbMoy + coor.latitude) / (nbMoy + 1);
-        let lng = (lng * nbMoy + coor.longitude) / (nbMoy + 1);   
-        nbMoy++   
-        L.map('mapid').setView([coor.latitude, coor.longitude], 10);  
+        latitude = (lat * moySanta + coor.latitude) / (moySanta + 1);
+        longitude = (lng * moySanta + coor.longitude) / (moySanta + 1);   
+        moySanta++   
+        L.marker([coor.latitude, coor.longitude]).addTo(mymap)      
         santaPos.setLatLng(lat,lng)     
       });
 
