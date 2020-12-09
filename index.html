@@ -37,7 +37,7 @@
 
       function sendToServer() {
         el = document.getElementById('riveResponse');
-        el.innerHTML = el.innerHTML+"Client : "+document.getElementById("input").value+"</br>";
+        el.innerHTML = el.innerHTML+"Client says : "+document.getElementById("input").value+"</br>";
         socket.emit("msg",document.getElementById("input").value);
       };
 
@@ -54,7 +54,7 @@
 
       socket.on('river', (riveMsg) => {
         el = document.getElementById('riveResponse');
-        el.innerHTML = el.innerHTML+"Bot : "+riveMsg+"</br>";
+        el.innerHTML = el.innerHTML+riveMsg+"</br>";
       });
 
     </script>
