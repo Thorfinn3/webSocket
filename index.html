@@ -38,7 +38,9 @@
         el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
         let lat = (lat * nbMoy + JSON.parse(data).latitude) / (nbMoy + 1);
-        let lng = (lng * nbMoy + JSON.parse(data).longitude) / (nbMoy + 1);        
+        let lng = (lng * nbMoy + JSON.parse(data).longitude) / (nbMoy + 1);   
+        nbMoy++   
+        L.map('mapid').setView([coor.latitude, coor.longitude], 10);  
         santaPos.setLatLng(lat,lng)     
       });
 
