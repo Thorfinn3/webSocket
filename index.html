@@ -16,9 +16,7 @@
     <script>
       var socket = io();
       
-      var markers
       var mymap = L.map('mapid').setView([67.49, 21.04], 10);
-      var mySanta = L.marker([67.49, 21.04]).addTo(mymap)
 
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
@@ -37,25 +35,8 @@
         var coor = JSON.parse(latLong)
         el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
-        markers.push(coor)
-        var resSanta = barycentre()
-        myMarker.setLatLng([resSanta.lat, resSanta.long])
+        L.marker([coor.latitude, coor.longitude]).addTo(mymap)      
       });
-
-      function barycentre() {
-        let long = 0
-        let lat = 0
-
-        for(let i = 0; i < markers.length; i++) {
-          long += markers[i].longitude
-          lat += markers[i].latitude
-        }
-
-        return {
-          "lat": lat / markers.length,
-          "long": long / markers.length
-        }
-    }
 
     </script>
     <br />
