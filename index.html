@@ -36,6 +36,8 @@
       }).addTo(mymap);
 
       function sendToServer() {
+        el = document.getElementById('riveResponse');
+        el.innerHTML = el.innerHTML+"Client : "+riveMsg+"</br>";
         socket.emit("msg",document.getElementById("input").value);
       };
 
@@ -52,7 +54,7 @@
 
       socket.on('river', (riveMsg) => {
         el = document.getElementById('riveResponse');
-        el.innerHTML = el.innerHTML+riveMsg+"</br>";
+        el.innerHTML = el.innerHTML+"Bot : "+riveMsg+"</br>";
       });
 
     </script>
