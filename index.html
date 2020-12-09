@@ -22,12 +22,12 @@
 
 
       var mymap = L.map('mapid').setView([67.49, 21.04], 5);
-      var santaIcon = L.Icon({
+      var santaIMG = L.icon({
           iconUrl: 'santa.png',
-          iconSize:   [70, 70],
+          iconSize: [70, 70],
       });
 
-      var santaPos = L.marker([67.49, 21.04], {title: "santa", icon: santaIcon, alt: "Santa", draggable: false}).addTo(mymap);     
+      var santaPos = L.marker([67.49, 21.04], {title: "santa", icon: santaIMG, alt: "Santa", draggable: false}).addTo(mymap);     
 
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
