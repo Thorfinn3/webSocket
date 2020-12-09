@@ -38,7 +38,7 @@
         el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
         markers.push(coor)
-        var resSanta = calculateBarycenter()
+        var resSanta = barycentre()
         myMarker.setLatLng([resSanta["lat"], resSanta["long"]])
       });
 
