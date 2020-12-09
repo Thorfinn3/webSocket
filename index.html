@@ -8,68 +8,68 @@
   </head>
   <body>
     <center>
-    <h1>Spot Santa Lab</h1>
-    </br>
-    <div id="mapid" style="width: 600px; height: 400px;"></div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
+      <h1>Spot Santa Lab</h1>
+      </br>
+      <div id="mapid" style="width: 600px; height: 400px;"></div>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        var socket = io();
 
-      var moySanta = 0
-      var latitudeSanta = 0
-      var longitudeSanta = 0
+        var moySanta = 0
+        var latitudeSanta = 0
+        var longitudeSanta = 0
 
 
-      var mymap = L.map('mapid').setView([67.49, 21.04], 5);
-      var santaIMG = L.icon({
-          iconUrl: 'https://s2.qwant.com/thumbr/0x380/4/1/589a0f996d87f9965e600c8ee6ac1b991583c77dad2323ed26adbf568b5626/33113.png?u=https%3A%2F%2Fwww.icone-png.com%2Fpng%2F33%2F33113.png&q=0&b=1&p=0&a=1',
-          iconSize: [50, 50],
-      });
+        var mymap = L.map('mapid').setView([67.49, 21.04], 5);
+        var santaIMG = L.icon({
+            iconUrl: 'https://s2.qwant.com/thumbr/0x380/4/1/589a0f996d87f9965e600c8ee6ac1b991583c77dad2323ed26adbf568b5626/33113.png?u=https%3A%2F%2Fwww.icone-png.com%2Fpng%2F33%2F33113.png&q=0&b=1&p=0&a=1',
+            iconSize: [50, 50],
+        });
 
-      var santaPos = L.marker([67.49, 21.04],{icon: santaIMG}).addTo(mymap);     
+        var santaPos = L.marker([67.49, 21.04],{icon: santaIMG}).addTo(mymap);     
 
-      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-          'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1
-      }).addTo(mymap);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+          maxZoom: 18,
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          id: 'mapbox/streets-v11',
+          tileSize: 512,
+          zoomOffset: -1
+        }).addTo(mymap);
 
-      function sendToServer() {
-        el = document.getElementById('riveResponse');
-        el.innerHTML = el.innerHTML+"The client says : "+document.getElementById("input").value+"</br>";
-        socket.emit("msg",document.getElementById("input").value);
-      };
+        function sendToServer() {
+          el = document.getElementById('riveResponse');
+          el.innerHTML = el.innerHTML+"The client says : "+document.getElementById("input").value+"</br>";
+          socket.emit("msg",document.getElementById("input").value);
+        };
 
-      socket.on('santa', (latLong) => {
-        let coor = JSON.parse(latLong)
-        el = document.getElementById('coordonate');
-        el.innerHTML = 'Coordonnées: ' + latLong;
-        latitudeSanta = (latitudeSanta * moySanta + coor.latitude) / (moySanta + 1);
-        longitudeSanta = (longitudeSanta * moySanta + coor.longitude) / (moySanta + 1);   
-        L.marker([coor.latitude, coor.longitude]).addTo(mymap);      
-        santaPos.setLatLng([latitudeSanta,longitudeSanta]);     
-        moySanta++;   
-      });
+        socket.on('santa', (latLong) => {
+          let coor = JSON.parse(latLong)
+          el = document.getElementById('coordinates');
+          el.innerHTML = 'Santa spot : '+coor.latitude+" / "+coor.longitude;
+          latitudeSanta = (latitudeSanta * moySanta + coor.latitude) / (moySanta + 1);
+          longitudeSanta = (longitudeSanta * moySanta + coor.longitude) / (moySanta + 1);   
+          L.marker([coor.latitude, coor.longitude]).addTo(mymap);      
+          santaPos.setLatLng([latitudeSanta,longitudeSanta]);     
+          moySanta++;   
+        });
 
-      socket.on('river', (riveMsg) => {
-        el = document.getElementById('riveResponse');
-        el.innerHTML = el.innerHTML+riveMsg+"</br>";
-      });
+        socket.on('river', (riveMsg) => {
+          el = document.getElementById('riveResponse');
+          el.innerHTML = el.innerHTML+riveMsg+"</br>";
+        });
 
-    </script>
-    <br />
-    <p id="coordonate"></p>
-    <br />
-    <h1>Conversational agent</h1>
+      </script>
+      <br />
+      <p id="coordinates"></p>
+      <br />
+      <h1>Conversational agent</h1>
 
-    <ul id="messages"></ul>
-    </br>
-    <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
-    </br>
-    <p id="riveResponse"></p>
+      <ul id="messages"></ul>
+      </br>
+      <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
+      </br>
+      <p id="riveResponse"></p>
     </center>
   </body>
 </html>
