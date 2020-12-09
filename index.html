@@ -8,26 +8,32 @@
   </head>
   <body>
     <center>
+      <!-- Partie Sport Santa -->
       <h1>Spot Santa Lab</h1>
       </br>
       <div id="mapid" style="width: 600px; height: 400px;"></div>
       <script src="/socket.io/socket.io.js"></script>
       <script>
-        var socket = io();
+        var socket = io(); //Creation du socket
 
-        var moySanta = 0
-        var latitudeSanta = 0
-        var longitudeSanta = 0
+        //Initialisation des variables pour localiser la maison
+        var moySanta = 0;
+        var latitudeSanta = 0;
+        var longitudeSanta = 0;
 
-
+        //Initialisation de la map
         var mymap = L.map('mapid').setView([67.49, 21.04], 5);
+
+        //Chargement de l'icone pour la maison
         var santaIMG = L.icon({
             iconUrl: 'https://s2.qwant.com/thumbr/0x380/4/1/589a0f996d87f9965e600c8ee6ac1b991583c77dad2323ed26adbf568b5626/33113.png?u=https%3A%2F%2Fwww.icone-png.com%2Fpng%2F33%2F33113.png&q=0&b=1&p=0&a=1',
-            iconSize: [50, 50],
+            iconSize: [60, 60],
         });
 
+        //Placement du premier marker qui dispose d'une image specifique (cense represente la maison de Santa)
         var santaPos = L.marker([67.49, 21.04],{icon: santaIMG}).addTo(mymap);     
 
+        //Mise en place de la map
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
           maxZoom: 18,
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
@@ -37,24 +43,41 @@
           zoomOffset: -1
         }).addTo(mymap);
 
+        //En cas d'appuie sur le send on va envoyer un message au serveur avec le contenu du champ texte
         function sendToServer() {
+          //Affichage sur la page du message a envoyer
           el = document.getElementById('riveResponse');
           el.innerHTML = el.innerHTML+"The client says : "+document.getElementById("input").value+"</br>";
+
+          //Envoi du message
           socket.emit("msg",document.getElementById("input").value);
         };
 
+        //Ecoute du channel santa
         socket.on('santa', (latLong) => {
-          let coor = JSON.parse(latLong)
+          let coor = JSON.parse(latLong) //Convertion en JSON
+
+          //Affichage du message reçu sur la page web
           el = document.getElementById('coordinates');
           el.innerHTML = 'Santa spot : '+coor.latitude+" / "+coor.longitude;
+
+          //Generation des coordonnees de la maison en fonction des coordonnes reçus
           latitudeSanta = (latitudeSanta * moySanta + coor.latitude) / (moySanta + 1);
-          longitudeSanta = (longitudeSanta * moySanta + coor.longitude) / (moySanta + 1);   
-          L.marker([coor.latitude, coor.longitude]).addTo(mymap);      
-          santaPos.setLatLng([latitudeSanta,longitudeSanta]);     
-          moySanta++;   
+          longitudeSanta = (longitudeSanta * moySanta + coor.longitude) / (moySanta + 1);  
+          
+          //Ajout du nouveau marker
+          L.marker([coor.latitude, coor.longitude]).addTo(mymap);  
+          
+          //Mise a jour du marker de la maison
+          santaPos.setLatLng([latitudeSanta,longitudeSanta]);
+
+          //Incrementation du nombre de positions
+          moySanta++; 
         });
 
+        //Ecoute du channel river pour la conversation
         socket.on('river', (riveMsg) => {
+          //Affichage du message reçu par le bot sur la page web
           el = document.getElementById('riveResponse');
           el.innerHTML = el.innerHTML+riveMsg+"</br>";
         });
@@ -63,8 +86,8 @@
       <br />
       <p id="coordinates"></p>
       <br />
+      <!-- Partie conversation avec le bot -->
       <h1>Conversational agent</h1>
-
       <ul id="messages"></ul>
       </br>
       <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
