@@ -7,9 +7,6 @@
 
   </head>
   <body>
-    <ul id="messages"></ul>
-    <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
-    </br>
     </br>
     <div id="mapid" style="width: 600px; height: 400px;"></div>
     <script src="/socket.io/socket.io.js"></script>
@@ -24,7 +21,7 @@
       var mymap = L.map('mapid').setView([67.49, 21.04], 5);
       var santaIMG = L.icon({
           iconUrl: 'https://s2.qwant.com/thumbr/0x380/4/1/589a0f996d87f9965e600c8ee6ac1b991583c77dad2323ed26adbf568b5626/33113.png?u=https%3A%2F%2Fwww.icone-png.com%2Fpng%2F33%2F33113.png&q=0&b=1&p=0&a=1',
-          iconSize: [70, 70],
+          iconSize: [50, 50],
       });
 
       var santaPos = L.marker([67.49, 21.04],{icon: santaIMG}).addTo(mymap);     
@@ -57,6 +54,10 @@
     <br />
     <br />
     <p id="coordonate"></p>
+    <ul id="messages"></ul>
+    </br>
+    <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
+    </br>
   </body>
 </html>
 
