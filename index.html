@@ -7,6 +7,7 @@
 
   </head>
   <body>
+    <center>
     </br>
     <div id="mapid" style="width: 600px; height: 400px;"></div>
     <script src="/socket.io/socket.io.js"></script>
@@ -37,7 +38,7 @@
 
       function sendToServer() {
         el = document.getElementById('riveResponse');
-        el.innerHTML = el.innerHTML+"Client says : "+document.getElementById("input").value+"</br>";
+        el.innerHTML = el.innerHTML+"The client says : "+document.getElementById("input").value+"</br>";
         socket.emit("msg",document.getElementById("input").value);
       };
 
@@ -66,6 +67,7 @@
     <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
     </br>
     <p id="riveResponse"></p>
+    </center>
   </body>
 </html>
 
