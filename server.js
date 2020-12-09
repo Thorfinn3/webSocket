@@ -45,6 +45,7 @@ io.on('connection', (socket) => {
     console.log('msg: ' + msg);
     bot.reply("client", msg).then(function(reply) {
       console.log("The bot says: " + reply);
+      io.emit('river', "The bot says: " + reply);
     });
   });
 
