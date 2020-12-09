@@ -17,18 +17,18 @@
       var socket = io();
 
       var moySanta = 0
-      var latitude = 0
-      var longitude = 0
+      var latitudeSanta = 0
+      var longitudeSanta = 0
 
 
       var mymap = L.map('mapid').setView([67.49, 21.04], 10);
 
       var santaIMG = L.icon({
-          iconUrl: "santa.png",
+          iconUrl: 'santa.png',
           iconSize:   [40, 40],
-      })
+      });
 
-      var santaPos = L.marker([67.49, 21.04], {title: "santa", icon: santaIMG, alt: "Santa", draggable: false}).addTo(mymap)      
+      var santaPos = L.marker([67.49, 21.04], {title: "santa", icon: santaIMG, alt: "Santa", draggable: false}).addTo(mymap);     
 
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
@@ -40,18 +40,18 @@
       }).addTo(mymap);
 
       function sendToServer() {
-        socket.emit("msg",document.getElementById("input").value)
-      }
+        socket.emit("msg",document.getElementById("input").value);
+      };
 
       socket.on('santa', (latLong) => {
         let coor = JSON.parse(latLong)
         el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
-        latitude = (latitude * moySanta + coor.latitude) / (moySanta + 1);
-        longitude = (longitude * moySanta + coor.longitude) / (moySanta + 1);   
-        L.marker([coor.latitude, coor.longitude]).addTo(mymap)      
-        santaPos.setLatLng([latitude,longitude])     
-        moySanta++   
+        latitudeSanta = (latitudeSanta * moySanta + coor.latitude) / (moySanta + 1);
+        longitudeSanta = (longitudeSanta * moySanta + coor.longitude) / (moySanta + 1);   
+        L.marker([coor.latitude, coor.longitude]).addTo(mymap);      
+        santaPos.setLatLng([latitudeSanta,longitudeSanta]);     
+        moySanta++;   
       });
 
     </script>
