@@ -11,6 +11,7 @@ let mySanta = new Santa(sweden);
 
 const express = require('express');
 const socketIO = require('socket.io');
+const reviscript = require('rivescript');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = '/index.html';
@@ -21,7 +22,7 @@ const server = express()
 
 const io = socketIO(server);
 
-var bot = new RiveScript();
+var bot = new reviscript();
 
 bot.loadDirectory("rive").then(loading_done).catch(loading_error);
  
