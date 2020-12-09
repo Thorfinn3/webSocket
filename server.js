@@ -63,5 +63,5 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-//Envoi regulie de la position du Santa
+//Envoi regulie de la position du Santa toute les 5 secondes
 setInterval( () => io.emit('santa', JSON.stringify(mySanta.getPosition())), 5000);
