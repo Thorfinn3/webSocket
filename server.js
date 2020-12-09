@@ -1,5 +1,14 @@
 'use strict';
 
+let Santa = require('./santa_class.js');
+
+let sweden = {	
+		latitude:67.498454,
+		longitude:21.040181
+	};
+
+let mySanta = new Santa(sweden);
+
 const express = require('express');
 const socketIO = require('socket.io');
 
@@ -18,9 +27,11 @@ io.on('connection', (socket) => {
 
   socket.on('msg', (msg) => {
     console.log('msg: ' + msg);
+    if(msg)
     socket.emit('coordonate',msg)
   });
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+setInterval( () => io.emit('santa', JSON.stringify(mySanta.getPosition())), 2000);

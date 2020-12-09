@@ -31,10 +31,10 @@
         socket.emit("msg",document.getElementById("input").value)
       }
 
-      socket.on('coordonate', (latLong) => {
+      socket.on('santa', (latLong) => {
         var coor = JSON.parse(latLong)
         el = document.getElementById('coordonate');
-        el.innerHTML = 'Coordonnées: ' + coor.latitude;
+        el.innerHTML = 'Coordonnées: ' + coor;
         L.marker([coor.latitude, coor.longitude]).addTo(mymap)
       });
 
