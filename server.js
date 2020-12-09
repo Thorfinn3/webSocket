@@ -23,15 +23,13 @@ const io = socketIO(server);
 
 io.on('connection', (socket) => {
   console.log('Client connected');
-  socket.emit('coordonate','{"latitude":48.78784141532905,"longitude":-3.231480160554523}')
 
   socket.on('msg', (msg) => {
     console.log('msg: ' + msg);
-    if(msg)
-    socket.emit('coordonate',msg)
   });
+
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
-setInterval( () => io.emit('santa', JSON.stringify(mySanta.getPosition())), 2000);
+setInterval( () => io.emit('santa', JSON.stringify(mySanta.getPosition())), 5000);
