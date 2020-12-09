@@ -49,8 +49,6 @@
           el = document.getElementById('riveResponse');
           el.innerHTML = el.innerHTML+"The client says : "+document.getElementById("input").value+"</br>";
           
-          el = document.getElementById('input');
-          el.innerHTML.value = " ";
           //Envoi du message
           socket.emit("msg",document.getElementById("input").value);
         };
