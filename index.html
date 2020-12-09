@@ -37,7 +37,7 @@
 
       function sendToServer() {
         el = document.getElementById('riveResponse');
-        el.innerHTML = el.innerHTML+"Client : "+riveMsg+"</br>";
+        el.innerHTML = el.innerHTML+"Client : "+document.getElementById("input").value+"</br>";
         socket.emit("msg",document.getElementById("input").value);
       };
 
