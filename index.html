@@ -40,11 +40,11 @@
         let coor = JSON.parse(latLong)
         el = document.getElementById('coordonate');
         el.innerHTML = 'Coordonnées: ' + latLong;
-        latitude = (lat * moySanta + coor.latitude) / (moySanta + 1);
-        longitude = (lng * moySanta + coor.longitude) / (moySanta + 1);   
-        moySanta++   
+        latitude = (latitude * moySanta + coor.latitude) / (moySanta + 1);
+        longitude = (longitude * moySanta + coor.longitude) / (moySanta + 1);   
         L.marker([coor.latitude, coor.longitude]).addTo(mymap)      
         santaPos.setLatLng(lat,lng)     
+        moySanta++   
       });
 
     </script>
