@@ -62,7 +62,7 @@
 
           //Affichage du message reçu sur la page web
           el = document.getElementById('coordinates');
-          el.innerHTML = '<bold>Santa spot : <bold>'+coor.latitude+" / "+coor.longitude;
+          el.innerHTML = '<strong>Santa spot : </strong>'+coor.latitude+" / "+coor.longitude;
 
           //Generation des coordonnees de la maison en fonction des coordonnes reçus
           latitudeSanta = (latitudeSanta * moySanta + coor.latitude) / (moySanta + 1);

@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
 
     //Reccuperation de la reponse du bot rivescript
     bot.reply("client", msg).then(function(reply) {
-      console.log("<bold>The bot says: <bold>" + reply);
+      console.log("<strong>The bot says: </strong>" + reply);
 
       //Envoi de la reponse du bot au client
       io.emit('river', "The bot says: " + reply);
