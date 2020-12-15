@@ -3,9 +3,9 @@
   <head>
     <title>Santa</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-
-  </head>
+≈  </head>
   <body>
     <center>
       <!-- Partie Sport Santa -->
@@ -93,11 +93,11 @@
       <h1>Conversational agent</h1>
       <ul id="messages"></ul>
       </br>
-      <input id="input" type="text"> <button id="bt" onclick="sendToServer()">Send</button>
+      <input class="w3-input w3-border w3-light-grey" type="text"> <button id="bt" onclick="sendToServer()" class="w3-btn w3-blue-grey">Send</button>
       </br>
       </br>
       <fieldset>
-        <legend> Messages</legend>
+        <legend> Chat</legend>
         <p id="riveResponse"></p>
       </fieldset>
     </center>
@@ -112,7 +112,7 @@ fieldset {
  margin-bottom:10px;
  }
 legend {
- color:#a0522d;
+ color:#a03a2d;
  font-weight:bold
  }
 </style>
