@@ -52,10 +52,10 @@ io.on('connection', (socket) => {
 
     //Reccuperation de la reponse du bot rivescript
     bot.reply("client", msg).then(function(reply) {
-      console.log("<strong>The bot says: </strong>" + reply);
+      console.log("The bot says: " + reply);
 
       //Envoi de la reponse du bot au client
-      io.emit('river', "The bot says: " + reply);
+      io.emit('river', "<strong>The bot says: </strong>" + reply);
     });
   });
 
