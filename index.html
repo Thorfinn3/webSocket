@@ -47,7 +47,7 @@
         function sendToServer() {
           //Affichage sur la page du message a envoyer
           el = document.getElementById('riveResponse');
-          el.innerHTML = el.innerHTML+"The client says : "+document.getElementById("input").value+"</br>";
+          el.innerHTML = el.innerHTML+"<bold>The client says : </bold>"+document.getElementById("input").value+"</br>";
           
           //Envoi du message
           socket.emit("msg",document.getElementById("input").value);
@@ -62,7 +62,7 @@
 
           //Affichage du message reçu sur la page web
           el = document.getElementById('coordinates');
-          el.innerHTML = 'Santa spot : '+coor.latitude+" / "+coor.longitude;
+          el.innerHTML = '<bold>Santa spot : <bold>'+coor.latitude+" / "+coor.longitude;
 
           //Generation des coordonnees de la maison en fonction des coordonnes reçus
           latitudeSanta = (latitudeSanta * moySanta + coor.latitude) / (moySanta + 1);
