@@ -48,11 +48,12 @@
           //Affichage sur la page du message a envoyer
           el = document.getElementById('riveResponse');
           el.innerHTML = el.innerHTML+"The client says : "+document.getElementById("input").value+"</br>";
-
-          document.getElementById('input').value = ''
           
           //Envoi du message
           socket.emit("msg",document.getElementById("input").value);
+
+          //Nettoyage du champ
+          document.getElementById('input').value = ''
         };
 
         //Ecoute du channel santa
