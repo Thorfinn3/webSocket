@@ -47,7 +47,7 @@
         function sendToServer() {
           //Affichage sur la page du message a envoyer
           el = document.getElementById('riveResponse');
-          el.innerHTML = el.innerHTML+"<bold>The client says : </bold>"+document.getElementById("input").value+"</br>";
+          el.innerHTML = el.innerHTML+"<strong>The client says : </strong>"+document.getElementById("input").value+"</br>";
           
           //Envoi du message
           socket.emit("msg",document.getElementById("input").value);
