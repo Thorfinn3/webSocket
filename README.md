@@ -11,7 +11,7 @@ http://rfmwebsocket.herokuapp.com/
 
 ## Explication 
 
-La partie client est décomposée en deux parties, une affichant la carte avec la position de Santa et l'estimation de la localisation de sa maison (différencié par une image). La seconde partie est un champ texte permettant d'interagir avec un bot conversationnel.
+La partie client est décomposée en deux parties, une affichant la carte avec la position de Santa et l'estimation de la localisation de sa maison (différencié par une image de Santa). La seconde partie est un champ texte permettant d'interagir avec un bot conversationnel.
 
 Les différents messages pouvant être envoyés sont : 
 * **my name is ...**
