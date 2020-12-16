@@ -95,7 +95,10 @@
       <div class="w3-container w3-teal">
         <h1>Conversational agent</h1>
       </div>
-      <div id="speach"><p>If you want to see exemple of phrases you can send to the bot please see the README on my </p><a href="https://github.com/Thorfinn3/webSocket" target="_blank">Github</a></div>
+      <div id="speach">
+        <p>If you want to see exemple of phrases you can send to the bot please see the README on my </p>
+        <a href="https://github.com/Thorfinn3/webSocket" target="_blank">Github</a>
+      </div>
       </br>
       <input id="input" type="text" placeholder="your message ..." size="60"> <button class="w3-btn w3-blue-grey" id="bt" onclick="sendToServer()">Send</button>
       </br>
@@ -121,6 +124,7 @@ legend {
  font-weight:bold
  }
 #speach {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
 }
 </style>
