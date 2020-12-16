@@ -1,9 +1,15 @@
 # TP Réseaux et flux multimédia - Charles Picard - IMR3
 
 ## Arborescence :
-* index.html : Page web qui permet au client d'interagir avec le serveur
-* server.js : Serveur avec les websockets et la gestion du bot
-* package.json : Description des packages et definition des dependances
+* **index.html** : Page web qui permet au client d'interagir avec le serveur
+* **server.js** : Serveur avec les websockets et la gestion du bot
+* **package.json** : Description des packages et definition des dependances
+* **leafletExample.html** : Exemple de base d'utilisation de leaflet
+* **santa_classe.js** : Classe permettant de générer les coordonnées de Santa
+* **package.json** : Description des différents paquets présents sur le serveur Heroku
+* **Procfile.txt** : Commandes lancée au démarrage du serveur Heroku
+* **rive/client.rive** : Fichier de conversation du bot
+* **app.json** : Manifeste de description de l'app
 
 ## Page d'accès au TP
 
