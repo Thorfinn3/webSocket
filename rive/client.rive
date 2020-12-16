@@ -70,3 +70,6 @@
 
 + who is my (boyfriend|girlfriend|spouse){weight=10}
 - <get spouse>
+
++ *
+- Sorry i don't understand
