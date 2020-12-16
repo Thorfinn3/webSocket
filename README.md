@@ -1,4 +1,4 @@
-# TP Réseaux et flux multimédia - Charles Picard - IM3
+# TP Réseaux et flux multimédia - Charles Picard - IMR3
 
 ## Arborescence :
 * index.html : Page web qui permet au client d'interagir avec le serveur
