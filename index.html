@@ -95,14 +95,17 @@
       <div class="w3-container w3-teal">
         <h1>Conversational agent</h1>
       </div>
+      <!-- lien vers une doc -->
       <div id="speach">
         <p>If you want to see exemple of phrases you can send to the bot please see the README on my </p>
         <a href="https://github.com/Thorfinn3/webSocket" target="_blank">Github</a>
       </div>
       </br>
+      <!-- Input pour rentrer les messages -->
       <input id="input" type="text" placeholder="your message ..." size="60"> <button class="w3-btn w3-blue-grey" id="bt" onclick="sendToServer()">Send</button>
       </br>
       </br>
+      <!-- Affichage du chat -->
       <fieldset>
         <legend> Chat</legend>
         <p id="riveResponse"></p>
@@ -124,7 +127,6 @@ legend {
  font-weight:bold
  }
 #speach {
-  display: flex;
-  flex-direction: row;
+  display: inline-block;
 }
 </style>
